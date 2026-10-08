@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Gunjan Tarare</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff4f1;--ink:#3b1f2b;--soft:#7a5563;--rose:#c2185b;--blush:#f8d3dc;--card:#ffffff;--gold:#b7791f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d0f17;--ink:#fde9ee;--soft:#d1a9b6;--rose:#ff6f9c;--blush:#4a2233;--card:#2a1521;--gold:#f2c56b}}
+:root[data-theme="dark"]{--bg:#1d0f17;--ink:#fde9ee;--soft:#d1a9b6;--rose:#ff6f9c;--blush:#4a2233;--card:#2a1521;--gold:#f2c56b}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Fraunces,Georgia,serif}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:0}
+section{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:72px 22px}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.hero small{color:var(--soft);font-size:1.05rem}
+.hero h1{font-size:clamp(3rem,13vw,6.5rem);line-height:1;margin:.2em 0;font-weight:300;font-style:italic;color:var(--rose)}
+.hero p{max-width:30ch;color:var(--soft);font-size:1.15rem}
+.btn{margin-top:26px;border:0;background:var(--rose);color:#fff;font:600 1rem Nunito,sans-serif;padding:14px 28px;border-radius:999px;cursor:pointer;transition:transform .2s}
+.btn:hover{transform:scale(1.05)}.btn:active{transform:scale(.96)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+h2{font-size:2rem;font-weight:400;margin:0 0 .6em;text-align:center}
+.counter{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;text-align:center}
+.counter div{background:var(--card);border-radius:18px;padding:18px 4px;border:1px solid var(--blush)}
+.counter b{display:block;font:600 clamp(1.6rem,7vw,2.6rem)/1.1 Fraunces,serif;color:var(--rose)}
+.counter span{font-size:.85rem;color:var(--soft)}
+.lead{text-align:center;color:var(--soft);margin-bottom:28px}
+.timeline{border-left:2px solid var(--blush);margin-left:10px;padding-left:26px}
+.timeline article{position:relative;margin-bottom:34px}
+.timeline article::before{content:"";position:absolute;left:-35px;top:8px;width:16px;height:16px;border-radius:50%;background:var(--rose);box-shadow:0 0 0 5px var(--blush)}
+.timeline h3{margin:0;font-size:1.3rem;font-weight:500}
+.timeline time{color:var(--gold);font-size:.9rem;font-weight:600}
+.timeline p{margin:.3em 0 0;color:var(--soft)}
+.reasons{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.flip{perspective:800px;height:150px;cursor:pointer;border:0;background:none;padding:0;font:inherit;color:inherit}
+.flip i{position:absolute;inset:0;transition:transform .6s;transform-style:preserve-3d}
+.flip{position:relative}
+.flip.on i{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:20px;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;border:1px solid var(--blush)}
+.front{background:var(--card);font-family:Fraunces,serif;font-size:1.1rem;color:var(--rose)}
+.back{background:var(--rose);color:#fff;transform:rotateY(180deg);font-size:.98rem}
+.letter{background:var(--card);border:1px solid var(--blush);border-radius:22px;padding:30px 24px;min-height:280px;font-family:Fraunces,serif;font-size:1.12rem;line-height:1.9;white-space:pre-wrap}
+.center{text-align:center}
+.final{text-align:center;padding-bottom:110px}
+.final h2{font-size:clamp(2rem,8vw,3.4rem);font-style:italic;color:var(--rose)}
+.toggle{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:14px;z-index:5;border:1px solid var(--blush);background:var(--card);color:var(--ink);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:1.1rem}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);opacity:0;background:var(--rose);color:#fff;padding:12px 22px;border-radius:999px;transition:.4s;z-index:6;max-width:90vw;text-align:center}
+#toast.show{transform:translate(-50%,0);opacity:1}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<button class="toggle" id="theme" aria-label="Switch light or dark theme">🌙</button>
+<canvas id="hearts" aria-hidden="true"></canvas>
+
+<section class="hero">
+  <small>This page is only for you</small>
+  <h1>Gunjan</h1>
+  <p>Since the day I first saw you, my heart has had one favourite person.</p>
+  <button class="btn" id="open">Tap if you're smiling 💗</button>
+</section>
+
+<section>
+  <h2>Since I first saw you</h2>
+  <p class="lead">24 December 2025 — the day everything changed for me.</p>
+  <div class="counter" id="counter" aria-live="off">
+    <div><b id="d">0</b><span>days</span></div>
+    <div><b id="h">0</b><span>hours</span></div>
+    <div><b id="m">0</b><span>minutes</span></div>
+    <div><b id="s">0</b><span>seconds</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Our journey</h2>
+  <div class="timeline">
+    <article><time>24 December 2025</time><h3>The first time I saw you</h3><p>One look, and I knew something in me had quietly shifted. I fell for you right then.</p></article>
+    <article><time>The harder days</time><h3>It wasn't always easy</h3><p>Our road had bumps, misunderstandings and moments I'd rather forget. But we didn't let go.</p></article>
+    <article><time>Today</time><h3>Everything feels steady</h3><p>Now it feels calm and in control. I'm grateful for you, for us, and for every chance to keep trying.</p></article>
+  </div>
+</section>
+
+<section>
+  <h2>Why I love you</h2>
+  <p class="lead">Tap a card.</p>
+  <div class="reasons" id="reasons"></div>
+</section>
+
+<section>
+  <h2>A letter for you</h2>
+  <div class="letter" id="letter" aria-label="Love letter"></div>
+  <div class="center"><button class="btn" id="replay">Read it again</button></div>
+</section>
+
+<section class="final">
+  <h2>Gunjan, I love you.</h2>
+  <p class="lead">Today, tomorrow, and on every ordinary day in between.</p>
+  <button class="btn" id="burst">Send you a little love 💞</button>
+</section>
+<div id="toast" role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+
+/* Theme */
+const root=document.documentElement;
+$('theme').onclick=()=>{
+  const dark=getComputedStyle(root).getPropertyValue('--bg').trim()==='#1d0f17';
+  root.dataset.theme=dark?'light':'dark';
+  $('theme').textContent=dark?'🌙':'☀️';
+};
+
+/* Live counter since 24 Dec 2025 */
+const start=new Date(2025,11,24,0,0,0);
+function tick(){
+  let diff=Math.max(0,Date.now()-start);
+  $('d').textContent=Math.floor(diff/864e5);
+  $('h').textContent=Math.floor(diff/36e5)%24;
+  $('m').textContent=Math.floor(diff/6e4)%60;
+  $('s').textContent=Math.floor(diff/1e3)%60;
+}
+tick();setInterval(tick,1000);
+
+/* Reason cards */
+const reasons=[
+ ["Your smile","It can fix my whole day without you even trying."],
+ ["Your heart","You care deeply, and I see it in the little things."],
+ ["Your strength","You stayed through the hard times and so did I."],
+ ["Your laugh","My favourite sound in the world."],
+ ["Your presence","Wherever you are feels like home to me."],
+ ["Just you","No list is enough. I love you for being Gunjan."]
+];
+$('reasons').innerHTML=reasons.map(r=>`<button class="flip"><i><span class="face front">${r[0]}</span><span class="face back">${r[1]}</span></i></button>`).join('');
+document.querySelectorAll('.flip').forEach(b=>b.onclick=()=>b.classList.toggle('on'));
+
+/* Typewriter letter */
+const text=`My dearest Gunjan,
+
+On 24 December 2025 I saw you for the first time, and I have been falling ever since.
+
+Our journey wasn't perfect. There were days of confusion and silence, and days I wasn't at my best. But those days taught me how much you matter, and that I would choose you again every time.
+
+Now everything feels steady and calm. I want to keep building that with you, with patience, honesty and a lot of love.
+
+Thank you for being you, and for being mine.
+
+Forever yours,
+Your person ❤️`;
+let timer;
+function type(){
+  clearInterval(timer);const el=$('letter');el.textContent='';let i=0;
+  timer=setInterval(()=>{el.textContent+=text[i++]||'';if(i>=text.length)clearInterval(timer)},35);
+}
+let typed=false;
+new IntersectionObserver((e,o)=>{if(e[0].isIntersecting&&!typed){typed=true;type();o.disconnect()}},{threshold:.3}).observe($('letter'));
+$('replay').onclick=type;
+
+/* Floating hearts canvas */
+const cv=$('hearts'),cx=cv.getContext('2d');let W,H,P=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+addEventListener('resize',size);size();
+const still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+function heart(x,y,s,a,c){cx.save();cx.globalAlpha=a;cx.fillStyle=c;cx.translate(x,y);cx.scale(s,s);cx.beginPath();
+ cx.moveTo(0,0.3);cx.bezierCurveTo(-1,-0.5,-2,0.6,0,1.8);cx.bezierCurveTo(2,0.6,1,-0.5,0,0.3);cx.fill();cx.restore()}
+function spawn(x,y,burst){
+  P.push({x:x??Math.random()*W,y:y??H+20,s:burst?6+Math.random()*8:4+Math.random()*7,
+   vx:burst?(Math.random()-.5)*6:(Math.random()-.5)*.6,vy:burst?-2-Math.random()*4:-.4-Math.random()*.8,
+   a:burst?.9:.25+Math.random()*.25,c:['#e91e63','#ff6f9c','#f8a5c2','#c2185b'][Math.random()*4|0],b:burst})
+}
+if(!still)setInterval(()=>spawn(),600);
+function loop(){
+  cx.clearRect(0,0,W,H);
+  P=P.filter(p=>p.y>-30&&p.a>0.02);
+  P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.b){p.vy+=.06;p.a-=.01}heart(p.x,p.y,p.s,p.a,p.c)});
+  requestAnimationFrame(loop);
+}
+loop();
+function burst(){for(let i=0;i<60;i++)spawn(W/2,H*.6,true)}
+
+/* Buttons */
+const toast=msg=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)};
+$('open').onclick=()=>{burst();toast('I knew it. That smile is my favourite 💗');document.querySelectorAll('section')[1].scrollIntoView()};
+$('burst').onclick=()=>{burst();toast('Received? I love you, Gunjan ❤️')};
+</script>
+</body>
+</html>
